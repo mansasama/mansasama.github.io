@@ -307,14 +307,6 @@ h3 { font-size: 1.3rem; line-height: 1.25; }
 }
 .teaser-arrow svg { width: 36%; }
 .teaser-link:hover .teaser-arrow { background: var(--gold); color: #1c2a22; border-color: var(--gold); transform: rotate(-45deg); }
-.teaser-float {
-  position: absolute; left: 0; top: 0; width: 220px; height: 300px; pointer-events: none; z-index: 3;
-  border-radius: 120px 120px 8px 8px; background: url("../media/seattle-sunset.jpg") center 60% / cover;
-  opacity: 0; transform: translate(-50%, -50%) scale(.7) rotate(-6deg); transition: opacity .35s ease, transform .5s var(--ease-out);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, .4);
-}
-.teaser-link:hover .teaser-float { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(-3deg); }
-@media (pointer: coarse) { .teaser-float { display: none; } }
 
 /* --------------------------------------------------------------------------
    Work: horizontal pinned track on desktop, stack on mobile

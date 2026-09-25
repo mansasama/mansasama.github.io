@@ -297,15 +297,6 @@
       });
       el.addEventListener('pointerleave', function () { el.style.transform = ''; });
     });
-    document.querySelectorAll('.teaser-link').forEach(function (el) {
-      var float = el.querySelector('.teaser-float');
-      if (!float) return;
-      el.addEventListener('pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        float.style.left = (e.clientX - r.left) + 'px';
-        float.style.top = (e.clientY - r.top) + 'px';
-      });
-    });
   }
 
   /* ---------- Active nav link for in-page sections ---------- */
