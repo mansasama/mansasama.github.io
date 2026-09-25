@@ -65,11 +65,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
    Background stack: video → shade (spotlight) → grain
    -------------------------------------------------------------------------- */
 .bg { position: fixed; inset: 0; z-index: -3; overflow: hidden; background: #1a1f1c; }
-.bg video, .bg img {
+.bg video {
   position: absolute; inset: -6%; width: 112%; height: 112%;
   object-fit: cover; object-position: center 62%;
   transform: scale(var(--bg-scale, 1.08)); transform-origin: center 60%;
   filter: saturate(1.08) contrast(1.04);
+}
+.bg .bg-main { display: none; }
+/* Wide screens: the portrait clip is shown whole in the centre,
+   with a blurred copy of itself filling the sides. */
+@media (min-aspect-ratio: 3/4) {
+  .bg .bg-fill { filter: blur(40px) saturate(1.2) brightness(.9); }
+  .bg .bg-main {
+    display: block; inset: 0 auto 0 50%; width: auto; height: 100%; aspect-ratio: 576 / 1024;
+    transform: translateX(-50%); object-fit: cover;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+  }
 }
 .bg-shade {
   position: fixed; inset: 0; z-index: -2; pointer-events: none;
@@ -96,7 +108,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 /* --------------------------------------------------------------------------
-   Chrome: progress, nav, menu, cursor, curtain, motion toggle
+   Chrome: progress, nav, menu, curtain, motion toggle
    -------------------------------------------------------------------------- */
 .progress {
   position: fixed; left: 0; top: 0; height: 2px; width: 100%; z-index: 120;
@@ -121,11 +133,9 @@ nav {
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
   font-family: var(--serif); font-weight: 600; font-size: 1.12rem; letter-spacing: -.01em;
 }
-.logo-mark {
-  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
-  border: 1px solid var(--line-strong); font-family: var(--mono); font-size: .7rem; letter-spacing: .04em;
-  background: conic-gradient(from 200deg, rgba(245, 189, 88, .3), transparent 40%, rgba(120, 207, 170, .25), transparent 80%);
-}
+.logo-mark { width: 44px; height: 44px; flex: none; border-radius: 50%; box-shadow: 0 0 0 1px rgba(245, 189, 88, .35), 0 6px 22px rgba(233, 139, 83, .25); }
+.logo-sun { transition: transform .8s var(--ease-out); }
+.logo:hover .logo-sun { transform: translateY(-7px); }
 .nav-links { display: flex; gap: 4px; align-items: center; }
 .nav-links a {
   position: relative; text-decoration: none; font-size: .88rem; font-weight: 500;
@@ -163,21 +173,6 @@ nav {
 .menu.open a:nth-child(2) { transition-delay: .06s; } .menu.open a:nth-child(3) { transition-delay: .12s; }
 .menu.open a:nth-child(4) { transition-delay: .18s; } .menu.open a:nth-child(5) { transition-delay: .24s; }
 .menu .mono { margin-top: 34px; color: var(--faint); }
-
-.cursor, .cursor-dot { display: none; }
-@media (pointer: fine) {
-  html.js .cursor, html.js .cursor-dot {
-    display: block; position: fixed; left: 0; top: 0; z-index: 180; pointer-events: none; border-radius: 50%;
-  }
-  html.js .cursor {
-    width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid rgba(255, 247, 230, .6);
-    display: grid; place-items: center; font-family: var(--mono); font-size: 0; color: #1c2a22;
-    transition: width .35s var(--ease-out), height .35s var(--ease-out), margin .35s var(--ease-out), background .3s ease, border-color .3s ease, font-size .2s ease;
-  }
-  html.js .cursor-dot { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; background: var(--gold); }
-  html.js .cursor.link { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgba(245, 189, 88, .16); border-color: var(--gold); }
-  html.js .cursor.view { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: var(--gold); border-color: var(--gold); font-size: .72rem; letter-spacing: .08em; }
-}
 
 .curtain { display: none; }
 html.js .curtain {

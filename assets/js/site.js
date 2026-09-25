@@ -78,11 +78,19 @@
   }
 
   /* ---------- Background video ---------- */
-  var video = document.querySelector('.bg video');
+  var VIDEO_SPEED = 0.5; // 1 = original speed
+  var videos = Array.prototype.slice.call(document.querySelectorAll('.bg video'));
+  var mainVideo = document.querySelector('.bg .bg-main');
+  var fillVideo = document.querySelector('.bg .bg-fill');
   var toggle = document.querySelector('.motion-toggle');
+  var videoOn = true;
+  function visible(v) { return getComputedStyle(v).display !== 'none'; }
   function setVideo(play) {
-    if (!video) return;
-    if (play) { var p = video.play(); if (p && p.catch) p.catch(function () {}); } else video.pause();
+    videoOn = play;
+    videos.forEach(function (v) {
+      v.defaultPlaybackRate = v.playbackRate = VIDEO_SPEED;
+      if (play && visible(v)) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause();
+    });
     if (toggle) {
       toggle.setAttribute('aria-pressed', String(!play));
       toggle.querySelector('.label').textContent = play ? 'Pause video' : 'Play video';
@@ -91,13 +99,19 @@
         : '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg>';
     }
   }
-  if (video) {
+  if (videos.length) {
     var pref = store('ms-video');
     setVideo(pref ? pref === 'on' : !reduce);
+    videos.forEach(function (v) {
+      v.addEventListener('loadedmetadata', function () { v.defaultPlaybackRate = v.playbackRate = VIDEO_SPEED; });
+    });
+    // Keep the blurred side fill in step with the sharp centre clip.
+    if (mainVideo && fillVideo) mainVideo.addEventListener('timeupdate', function () {
+      if (visible(mainVideo) && Math.abs(fillVideo.currentTime - mainVideo.currentTime) > .25) fillVideo.currentTime = mainVideo.currentTime;
+    });
     if (toggle) toggle.addEventListener('click', function () {
-      var play = video.paused;
-      setVideo(play);
-      store('ms-video', play ? 'on' : 'off');
+      setVideo(!videoOn);
+      store('ms-video', videoOn ? 'on' : 'off');
     });
   }
 
@@ -245,10 +259,6 @@
     }
   }
 
-  var cursor = document.querySelector('.cursor');
-  var cursorDot = document.querySelector('.cursor-dot');
-  var ring = { x: mouse.x, y: mouse.y };
-
   function frame(t) {
     var y = window.scrollY;
     if (y !== lastY) { onScroll(y); lastY = y; }
@@ -267,23 +277,11 @@
       });
     }
 
-    if (cursor && finePointer) {
-      ring.x += (mouse.x - ring.x) * .18;
-      ring.y += (mouse.y - ring.y) * .18;
-      cursor.style.transform = 'translate3d(' + ring.x.toFixed(1) + 'px,' + ring.y.toFixed(1) + 'px,0)';
-      cursorDot.style.transform = 'translate3d(' + mouse.x + 'px,' + mouse.y + 'px,0)';
-    }
     requestAnimationFrame(frame);
   }
 
   window.addEventListener('pointermove', function (e) {
     mouse.x = e.clientX; mouse.y = e.clientY;
-    if (!cursor) return;
-    var view = e.target.closest('[data-cursor="view"]');
-    var link = !view && e.target.closest('a, button');
-    cursor.classList.toggle('view', !!view);
-    cursor.classList.toggle('link', !!link);
-    cursor.textContent = view ? 'View' : '';
   }, { passive: true });
 
   /* ---------- Pointer tilt + glow on cards ---------- */
@@ -336,6 +334,7 @@
     vh = window.innerHeight; vw = window.innerWidth;
     layoutWork();
     measureMarquees();
+    if (videos.length) setVideo(videoOn);
     lastY = -1;
   }
   var resizeTimer;

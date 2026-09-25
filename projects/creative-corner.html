@@ -11,7 +11,7 @@
   <meta property="og:description" content="Creative Corner: Making learning feel like play. A case study by Manasa Sama." />
   <meta property="og:image" content="https://mansasama.github.io/assets/media/seattle-sunset.jpg" />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f5bd58'/%3E%3Cpath d='M4 40c8-6 14-10 20-4s12-12 18-6 12 4 18 10v8H4z' fill='%2316372f'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%23f5bd58'/%3E%3Cpath d='M1 31 L7 25 L12 28 L19 21 L25 26.5 L30 23.5 L39 29 A19 19 0 0 1 1 29Z' fill='%2316372f'/%3E%3Ctext x='20' y='18.5' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='13' fill='%2316372f'%3EMS%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet" />
@@ -21,7 +21,10 @@
 <body class="page-sub page-case">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="bg" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" poster="../assets/media/seattle-sunset.jpg">
+    <video class="bg-fill" autoplay muted loop playsinline preload="auto" poster="../assets/media/seattle-sunset.jpg">
+      <source src="../assets/media/seattle-sunset.mp4" type="video/mp4" />
+    </video>
+    <video class="bg-main" autoplay muted loop playsinline preload="auto" poster="../assets/media/seattle-sunset.jpg">
       <source src="../assets/media/seattle-sunset.mp4" type="video/mp4" />
     </video>
   </div>
@@ -30,10 +33,9 @@
   <div class="grain" aria-hidden="true"></div>
   <div class="progress" aria-hidden="true"></div>
   <div class="curtain" aria-hidden="true"><span>Manasa Sama</span><span class="mono">Seattle · 47.61° N</span></div>
-  <div class="cursor" aria-hidden="true"></div><div class="cursor-dot" aria-hidden="true"></div>
   <header class="nav-wrap">
     <nav aria-label="Primary">
-      <a class="logo" href="../index.html" aria-label="Manasa Sama — home"><span class="logo-mark">MS</span><span>Manasa Sama</span></a>
+      <a class="logo" href="../index.html" aria-label="Manasa Sama — home"><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="logo-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7cf78"/><stop offset="1" stop-color="#e98b53"/></linearGradient><clipPath id="logo-clip"><circle cx="20" cy="20" r="19"/></clipPath></defs><circle cx="20" cy="20" r="19" fill="url(#logo-sky)"/><g clip-path="url(#logo-clip)"><circle class="logo-sun" cx="28.5" cy="29" r="5" fill="#fff1c9" opacity=".85"/><path class="logo-ridge" d="M-2 33 L7 28 L12 30.5 L19 25.5 L25 29.5 L30 27.5 L42 32 V42 H-2Z" fill="#16372f"/><path d="M6 36.5h8M18 36.5h13M11 39h16" stroke="#f5bd58" stroke-width="1" stroke-linecap="round" opacity=".7"/></g><text x="20" y="20" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-weight="600" font-size="15" letter-spacing="-.6" fill="#16372f">MS</text></svg><span>Manasa Sama</span></a>
       <div class="nav-links">
         <a href="../index.html#work">Work</a>
         <a href="../index.html#experience">Experience</a>
@@ -85,7 +87,7 @@
         <span class="mono">What we built</span>
         <div>
           <h2 class="split"><span class="line-mask"><span style="--i:0">Three working pieces in one weekend.</span></span></h2>
-          <div data-reveal><ol class="did"><li data-reveal>An image-recognition feature for interactive challenges.</li><li data-reveal>An example game storyline to show how story-led play would feel.</li><li data-reveal>A children’s book recommender for personalized suggestions.</li></ol></div>
+          <div data-reveal><ol class="did"><li data-reveal><span>An image-recognition feature for interactive challenges.</span></li><li data-reveal><span>An example game storyline to show how story-led play would feel.</span></li><li data-reveal><span>A children’s book recommender for personalized suggestions.</span></li></ol></div>
         </div>
       </section>
       <section class="chapter">
@@ -111,7 +113,7 @@
       </section>
     </div>
 
-    <a class="next-project" href="nemosafe.html" data-cursor="view">
+    <a class="next-project" href="nemosafe.html">
       <span class="inner"><span><span class="mono">Next project · 05</span><strong>nemoSafe</strong></span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </a>
   </main>
