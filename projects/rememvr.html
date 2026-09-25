@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#08120f" />
+  <title>RememVR — Manasa Sama</title>
+  <meta name="description" content="RememVR: Making cognitive testing more approachable. A case study by Manasa Sama." />
+  <meta property="og:title" content="RememVR — Manasa Sama" />
+  <meta property="og:description" content="RememVR: Making cognitive testing more approachable. A case study by Manasa Sama." />
+  <meta property="og:image" content="https://mansasama.github.io/assets/media/seattle-sunset.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f5bd58'/%3E%3Cpath d='M4 40c8-6 14-10 20-4s12-12 18-6 12 4 18 10v8H4z' fill='%2316372f'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+  <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('loaded')},2500);</script>
+</head>
+<body class="page-sub page-case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="bg" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto" poster="../assets/media/seattle-sunset.jpg">
+      <source src="../assets/media/seattle-sunset.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="bg-shade" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"><span>Manasa Sama</span><span class="mono">Seattle · 47.61° N</span></div>
+  <div class="cursor" aria-hidden="true"></div><div class="cursor-dot" aria-hidden="true"></div>
+  <header class="nav-wrap">
+    <nav aria-label="Primary">
+      <a class="logo" href="../index.html" aria-label="Manasa Sama — home"><span class="logo-mark">MS</span><span>Manasa Sama</span></a>
+      <div class="nav-links">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#toolkit">Toolkit</a>
+        <a href="../about.html">About me</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <a class="resume-link" href="../assets/Manasa-Sama-Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    </nav>
+  </header>
+  <div class="menu" id="menu">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#toolkit">Toolkit</a>
+    <a href="../about.html">About me</a>
+    <a href="../index.html#contact">Contact</a>
+    <a href="../assets/Manasa-Sama-Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+    <span class="mono">mansa_sam@outlook.com</span>
+  </div>
+
+  <main id="main">
+    <section class="case-hero" aria-labelledby="case-title">
+      <div class="case-hero-inner">
+        <a class="back-link mono" href="../index.html#work"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> All work</a>
+        <div class="role-line mono" data-reveal>03 / RememVR · Cognitive health</div>
+        <h1 id="case-title" class="split"><span class="line-mask"><span style="--i:0">Making cognitive testing</span></span><span class="line-mask"><span style="--i:1">more <em>approachable.</em></span></span></h1>
+        <p class="lede" data-reveal style="--d:.3s">A memory-aid concept pairing smartwatch and VR experiences. The work explored how a gamified experience and a clinician-facing view could reduce friction in cognitive assessment.</p>
+        <dl class="case-meta" data-reveal style="--d:.45s"><div><dt class="mono">Role</dt><dd>Product designer & full-stack IoT developer</dd></div><div><dt class="mono">Platforms</dt><dd>VR · Smartwatch</dd></div><div><dt class="mono">Supported by</dt><dd>UW Medicine</dd></div><div><dt class="mono">Clinician tool</dt><dd>Flask / Python dashboard</dd></div></dl>
+      </div>
+    </section>
+
+    <div class="case-visual-wrap">
+      <div class="case-visual project-visual visual-vr" data-reveal aria-hidden="true">
+        <span class="tag">Cognitive health</span>
+        <div class="pulse"></div><div class="pulse p2"></div><div class="headset"></div>
+      </div>
+    </div>
+
+    <div class="case-body">
+      <section class="chapter">
+        <span class="mono">The challenge</span>
+        <div>
+          <h2 class="split"><span class="line-mask"><span style="--i:0">Assessment has friction on both sides of the table.</span></span></h2>
+          <div data-reveal><p>I interviewed users, doctors, and caregivers to understand where cognitive assessment breaks down. RememVR asked two questions: could a <strong>gamified experience</strong> make testing more approachable for the person being assessed, and could a <strong>clinician-facing view</strong> shorten the diagnosis period?</p></div>
+        </div>
+      </section>
+      <section class="chapter">
+        <span class="mono">What I did</span>
+        <div>
+          <h2 class="split"><span class="line-mask"><span style="--i:0">Research through to a connected prototype.</span></span></h2>
+          <div data-reveal><ol class="did"><li data-reveal>Interviewed users, doctors, and caregivers to identify pain points.</li><li data-reveal>Designed a gamified VR cognitive-testing experience paired with a smartwatch.</li><li data-reveal>Built a Flask/Python clinician dashboard to help shorten the diagnosis period.</li><li data-reveal>Connected the pieces into a working prototype as the full-stack IoT developer.</li></ol></div>
+        </div>
+      </section>
+      <section class="chapter">
+        <span class="mono">The process</span>
+        <div>
+          <h2 class="split"><span class="line-mask"><span style="--i:0">How it came together.</span></span></h2>
+          <div data-reveal><div class="steps" data-fill="--st" style="--n:4"><span class="steps-fill" aria-hidden="true"></span><div class="step" data-reveal style="--d:0.00s"><span class="mono">01</span><strong>User interviews</strong><p>Patients, doctors, caregivers</p></div><div class="step" data-reveal style="--d:0.12s"><span class="mono">02</span><strong>Experience design</strong><p>Gamified VR testing</p></div><div class="step" data-reveal style="--d:0.24s"><span class="mono">03</span><strong>Connected prototype</strong><p>Smartwatch + VR</p></div><div class="step" data-reveal style="--d:0.36s"><span class="mono">04</span><strong>Clinician view</strong><p>Flask/Python dashboard</p></div></div></div>
+        </div>
+      </section>
+      <section class="chapter">
+        <span class="mono">Built with</span>
+        <div>
+          
+          <div data-reveal><div class="chips"><span>Virtual reality</span><span>Smartwatch</span><span>Python</span><span>Flask</span><span>User interviews</span><span>Gamification</span></div></div>
+        </div>
+      </section>
+    </div>
+
+    <a class="next-project" href="creative-corner.html" data-cursor="view">
+      <span class="inner"><span><span class="mono">Next project · 04</span><strong>Creative Corner</strong></span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+  </main>
+  <footer><span>Manasa Sama · Seattle, Washington</span><span>Product thinking backed by engineering depth.</span></footer>
+  <button class="motion-toggle" type="button" aria-pressed="false"><span class="icon"></span><span class="label">Pause video</span></button>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>
