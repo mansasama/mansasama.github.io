@@ -351,66 +351,52 @@ html.hscroll .work-counter {
 .project-cta svg { width: 18px; transition: transform .45s var(--ease-out); }
 .project:hover .project-cta svg { transform: translateX(6px); }
 
-/* Project illustrations (shared with case-study pages).
-   Base styles are the finished frame; keyframes animate towards it. */
+/* Project illustrations (shared with case-study pages) */
 .visual-fire { background: #1f4d40; color: #fff8e8; }
+.visual-fire .terrain { position: absolute; left: -10%; right: -10%; height: 110px; border: 1px solid #7ba492; border-radius: 50%; transform: rotate(-8deg); }
+.visual-fire .t1 { top: 22%; } .visual-fire .t2 { top: 38%; } .visual-fire .t3 { top: 54%; } .visual-fire .t4 { top: 70%; opacity: .5; }
+.visual-fire .hotspot { position: absolute; width: 64px; height: 64px; right: 28%; top: 44%; border-radius: 50%; background: #f27c58; box-shadow: 0 0 0 20px rgba(242, 124, 88, .2), 0 0 0 46px rgba(244, 185, 65, .1); animation: hot 3s ease-in-out infinite; }
+.visual-fire .cross { position: absolute; right: 20px; bottom: 20px; color: #b9cec2; }
+@keyframes hot { 50% { box-shadow: 0 0 0 30px rgba(242, 124, 88, .14), 0 0 0 70px rgba(244, 185, 65, .06); } }
 .visual-motion { background: #39465a; color: #f3f5f4; }
+.phone { position: absolute; width: 112px; height: 205px; border: 5px solid currentColor; border-radius: 24px; top: calc(50% - 90px); left: calc(50% - 56px); animation: rock 4s ease-in-out infinite; }
+.phone::before { content: ""; position: absolute; width: 33px; height: 4px; border-radius: 4px; background: currentColor; top: 8px; left: calc(50% - 16px); }
+.phone .tilt { position: absolute; width: 58px; height: 58px; border-radius: 50%; background: var(--coral); top: 66px; left: 22px; animation: counter 4s ease-in-out infinite; }
+@keyframes rock { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(7deg); } }
+@keyframes counter { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
+.motion-line { position: absolute; width: 120px; height: 50px; border-top: 2px solid currentColor; border-radius: 50%; opacity: .45; }
+.motion-line.m1 { left: 10px; top: 58%; transform: rotate(-6deg); } .motion-line.m2 { right: 4px; top: 40%; transform: rotate(14deg); }
 .visual-vr { background: #4f5770; color: #fff8ea; }
+.headset { position: absolute; width: 214px; height: 112px; border-radius: 34px 34px 48px 48px; background: #fff6e1; left: calc(50% - 107px); top: calc(50% - 50px); }
+.headset::before, .headset::after { content: ""; position: absolute; width: 34px; height: 34px; border-radius: 50%; background: #db6f8b; top: 36px; animation: blink 5s ease-in-out infinite; }
+.headset::before { left: 48px; } .headset::after { right: 48px; }
+@keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+.pulse { position: absolute; width: 260px; height: 80px; border: 2px solid #f4c566; border-radius: 50%; left: calc(50% - 130px); top: calc(50% - 34px); animation: ring 3.2s ease-out infinite; }
+.pulse.p2 { animation-delay: 1.6s; }
+@keyframes ring { from { transform: scale(.8); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
 .visual-learning { background: #b57640; color: #fff7df; }
+.learning-card { position: absolute; width: 142px; height: 174px; border: 3px solid #29453a; background: #fff9e9; box-shadow: 10px 10px 0 rgba(41, 69, 58, .3); }
+.learning-card.back { left: calc(50% - 94px); top: calc(50% - 70px); transform: rotate(-8deg); background: #e57c69; animation: floatA 6s ease-in-out infinite; }
+.learning-card.front { left: calc(50% - 50px); top: calc(50% - 50px); transform: rotate(7deg); animation: floatB 6s ease-in-out infinite; }
+.learning-card.front::before { content: ""; position: absolute; width: 55px; height: 55px; border: 3px solid #29453a; border-radius: 50%; left: 40px; top: 30px; }
+.learning-card.front::after { content: ""; position: absolute; left: 28px; right: 28px; bottom: 34px; height: 3px; background: #29453a; box-shadow: 0 13px 0 #29453a; opacity: .58; }
+@keyframes floatA { 50% { transform: rotate(-11deg) translateY(-8px); } }
+@keyframes floatB { 50% { transform: rotate(4deg) translateY(6px); } }
+.learning-spark { position: absolute; width: 18px; height: 18px; border: 3px solid currentColor; transform: rotate(45deg); animation: spin 8s linear infinite; }
+.learning-spark.s1 { left: 17%; top: 44%; } .learning-spark.s2 { right: 14%; top: 27%; width: 12px; height: 12px; }
+@keyframes spin { to { transform: rotate(405deg); } }
 .visual-safety { background: #3e4a63; color: #fff8ea; }
-.viz { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.viz-label { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
-.viz-label.sm { font-size: 8px; }
-.viz * { transform-box: fill-box; transform-origin: center; }
-
-/* Foreflame: satellite sweep paints a risk grid, then a bookmark drops */
-.ff-contour { fill: none; stroke: #7ba492; stroke-width: 1; opacity: .5; }
-.ff-cell { opacity: var(--o); animation: ff-heat 7s var(--d) infinite backwards; }
-.ff-scan { opacity: 0; animation: ff-scan 7s linear infinite; transform-box: view-box; transform-origin: 0 0; }
-.ff-pin { transform-origin: 50% 100%; animation: ff-pin 7s infinite backwards; }
-@keyframes ff-heat { 0% { opacity: 0; } 5% { opacity: var(--o); } 82% { opacity: var(--o); } 96%, 100% { opacity: 0; } }
-@keyframes ff-scan { 0% { transform: translateX(-20px); opacity: 0; } 4% { opacity: 1; } 43% { transform: translateX(420px); opacity: 1; } 44%, 100% { transform: translateX(420px); opacity: 0; } }
-@keyframes ff-pin { 0%, 48% { opacity: 0; transform: translateY(-22px); } 55% { opacity: 1; transform: none; } 59% { transform: translateY(-5px); } 63% { transform: none; } 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
-
-/* quEASY: the phone rocks with the car; its screen counter-rotates to stay level */
-.q-phone, .q-level { transform-box: view-box; transform-origin: 200px 150px; }
-.q-phone { animation: q-rock 5s ease-in-out infinite; }
-.q-level { animation: q-level 5s ease-in-out infinite; }
-.q-road { animation: q-road 1.2s linear infinite; }
-.q-road.fast { animation-duration: .8s; }
-@keyframes q-rock { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
-@keyframes q-level { 0%, 100% { transform: rotate(10deg); } 50% { transform: rotate(-10deg); } }
-@keyframes q-road { to { stroke-dashoffset: -40; } }
-
-/* RememVR: memory pattern in the headset, watch pulse, clinician bars */
-.vr-tile { fill: #4f5770; }
-.vr-tile.lit { fill: #f4c566; animation: vr-tile 6s var(--d) infinite backwards; }
-.vr-check { animation: vr-check 6s infinite backwards; }
-.vr-ecg { stroke-dasharray: 1; animation: vr-ecg 1.6s linear infinite; }
-.vr-bar { transform-origin: 50% 100%; animation: vr-bar 6s var(--d) infinite backwards; }
-@keyframes vr-tile { 0% { fill: #4f5770; } 3% { fill: #f4c566; } 11% { fill: #f4c566; } 15%, 100% { fill: #4f5770; } }
-@keyframes vr-check { 0%, 62% { opacity: 0; transform: scale(.4); } 68% { opacity: 1; transform: scale(1.1); } 72%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
-@keyframes vr-ecg { from { stroke-dashoffset: 1; } to { stroke-dashoffset: -1; } }
-@keyframes vr-bar { 0%, 60% { transform: scaleY(0); } 72%, 92% { transform: none; } 100% { transform: scaleY(0); } }
-
-/* Creative Corner: a drawing sketches itself, gets recognised, books follow */
-.cc-draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: cc-draw 7s infinite backwards; }
-.cc-detect { animation: cc-detect 7s infinite backwards; }
-.cc-book { transform-origin: 50% 100%; animation: cc-book 7s calc(var(--d) + 3.4s) infinite backwards; }
-.cc-spark { animation: cc-spin 8s linear infinite; }
-.cc-spark.slow { animation-duration: 12s; animation-direction: reverse; }
-@keyframes cc-draw { 0% { stroke-dashoffset: 1; } 30%, 90% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
-@keyframes cc-detect { 0%, 34% { opacity: 0; transform: scale(1.15); } 40%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
-@keyframes cc-book { 0% { opacity: 0; transform: translateY(30px); } 8%, 40% { opacity: 1; transform: none; } 50%, 100% { opacity: 0; transform: none; } }
-@keyframes cc-spin { to { transform: rotate(360deg); } }
-
-/* nemoSafe: every turn passes while the trajectory crosses the threshold */
-.ns-turn { animation: ns-turn 9s var(--d) infinite backwards; }
-.ns-line { stroke-dasharray: 1; stroke-dashoffset: 0; animation: ns-line 9s infinite backwards; }
-.ns-flag { animation: ns-flag 9s infinite backwards; }
-@keyframes ns-turn { 0% { opacity: 0; transform: translateY(8px); } 4%, 70% { opacity: 1; transform: none; } 78%, 100% { opacity: 0; } }
-@keyframes ns-line { 0%, 4% { stroke-dashoffset: 1; } 52%, 86% { stroke-dashoffset: 0; opacity: 1; } 94%, 100% { stroke-dashoffset: 0; opacity: 0; } }
-@keyframes ns-flag { 0%, 52% { opacity: 0; transform: scale(.3); } 57% { opacity: 1; transform: scale(1.15); } 60%, 86% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+.safety-thread { position: absolute; inset: 78px 26px 30px; display: grid; align-content: center; gap: 14px; }
+.safety-message { width: min(70%, 200px); padding: 12px 14px; border: 1px solid #9da9bf; border-radius: 4px 14px 14px 14px; display: grid; gap: 6px; animation: msg 6s ease infinite backwards; }
+.safety-message i { display: block; height: 4px; border-radius: 2px; background: currentColor; opacity: .7; }
+.safety-message i + i { width: 62%; opacity: .4; }
+.safety-message:nth-child(2) { animation-delay: .6s; } .safety-message:nth-child(3) { animation-delay: 1.2s; }
+@keyframes msg { 0% { opacity: 0; transform: translateY(8px); } 8%, 80% { opacity: 1; transform: none; } 92%, 100% { opacity: 0; } }
+.safety-message { color: #9da9bf; }
+.safety-message.agent { justify-self: end; border-color: #f2a082; border-radius: 14px 4px 14px 14px; color: #f2a082; }
+.safety-scan { height: 2px; background: #f4c566; position: relative; margin: 6px 0; }
+.safety-node { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #f4c566; top: -3px; left: 0; box-shadow: 0 0 0 7px rgba(244, 197, 102, .16); animation: scan 4s ease-in-out infinite; }
+@keyframes scan { 0%, 100% { left: 0; } 50% { left: calc(100% - 8px); } }
 
 /* --------------------------------------------------------------------------
    Experience
@@ -481,6 +467,9 @@ footer { max-width: var(--max); width: calc(100% - 2 * var(--gutter)); margin: 0
 .case-visual { max-width: var(--max); margin: 0 auto; height: clamp(300px, 42vw, 520px); border-radius: 6px 6px 6px 90px; overflow: hidden; }
 .case-visual-wrap { padding: 0 var(--gutter); }
 .case-visual.project-visual { padding: 30px; }
+.case-visual .headset, .case-visual .phone, .case-visual .learning-card, .case-visual .pulse, .case-visual .hotspot { scale: 1.35; }
+.case-visual .safety-thread { inset: 18% 22% 16%; }
+.case-visual .safety-message { width: min(60%, 320px); padding: 16px 18px; }
 .case-body { padding: clamp(80px, 12vw, 150px) var(--gutter) 40px; }
 .chapter { max-width: var(--max); margin: 0 auto clamp(70px, 10vw, 120px); display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 44px; }
 .chapter > .mono { color: var(--gold); position: sticky; top: 110px; align-self: start; padding-top: 8px; }
@@ -608,5 +597,4 @@ html.motion .steps-fill { transform: scaleX(var(--st, 0)); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .grain { display: none; }
-  .viz, .viz * { animation: none !important; }
 }
