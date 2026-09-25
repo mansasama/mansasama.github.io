@@ -78,7 +78,7 @@
   }
 
   /* ---------- Background video ---------- */
-  var VIDEO_SPEED = 0.5; // 1 = original speed
+  var VIDEO_SPEED = 0.75; // 1 = original speed
   var videos = Array.prototype.slice.call(document.querySelectorAll('.bg video'));
   var mainVideo = document.querySelector('.bg .bg-main');
   var fillVideo = document.querySelector('.bg .bg-fill');

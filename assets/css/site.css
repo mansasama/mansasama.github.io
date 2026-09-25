@@ -133,9 +133,11 @@ nav {
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
   font-family: var(--serif); font-weight: 600; font-size: 1.12rem; letter-spacing: -.01em;
 }
-.logo-mark { width: 44px; height: 44px; flex: none; border-radius: 50%; box-shadow: 0 0 0 1px rgba(245, 189, 88, .35), 0 6px 22px rgba(233, 139, 83, .25); }
-.logo-sun { transition: transform .8s var(--ease-out); }
-.logo:hover .logo-sun { transform: translateY(-7px); }
+.logo-mark { width: 50px; height: 30px; flex: none; color: var(--ink); overflow: visible; }
+.logo-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.logo:hover .logo-line { animation: logo-draw 1.4s var(--ease-out) both; }
+.logo:hover .logo-line.reflect { animation-delay: .35s; }
+@keyframes logo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 .nav-links { display: flex; gap: 4px; align-items: center; }
 .nav-links a {
   position: relative; text-decoration: none; font-size: .88rem; font-weight: 500;
