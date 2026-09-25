@@ -176,26 +176,6 @@
   });
   function measureMarquees() { marquees.forEach(function (m) { m.half = m.el.scrollWidth / 2; }); }
 
-  /* ---------- Horizontal work track ---------- */
-  var pin = document.querySelector('.work-pin');
-  var track = pin && pin.querySelector('.work-track');
-  var counterNow = pin && pin.querySelector('.work-counter .now');
-  var counterBar = pin && pin.querySelector('.work-counter');
-  var cards = track ? track.querySelectorAll('.project') : [];
-  var workDist = 0;
-  var wideMq = window.matchMedia('(min-width: 1024px) and (min-height: 620px)');
-  function layoutWork() {
-    if (!pin) return;
-    var enable = !reduce && wideMq.matches;
-    root.classList.toggle('hscroll', enable);
-    if (enable) {
-      workDist = Math.max(0, track.scrollWidth - vw);
-      pin.style.height = (workDist + vh) + 'px';
-    } else {
-      pin.style.height = '';
-      track.style.transform = '';
-    }
-  }
 
   /* ---------- Frame loop: everything scroll- or pointer-driven ---------- */
   var nav = document.querySelector('.nav-wrap');
@@ -250,13 +230,6 @@
       el.style.setProperty(el.getAttribute('data-fill'), progressOf(el, .8, .5).toFixed(4));
     });
 
-    if (root.classList.contains('hscroll')) {
-      var r = pin.getBoundingClientRect();
-      var p = clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
-      track.style.transform = 'translate3d(' + (-p * workDist).toFixed(1) + 'px,0,0)';
-      counterBar.style.setProperty('--work', p.toFixed(4));
-      if (counterNow) counterNow.textContent = String(Math.min(cards.length, Math.round(p * (cards.length - 1)) + 1)).padStart(2, '0');
-    }
   }
 
   function frame(t) {
@@ -323,7 +296,6 @@
   /* ---------- Layout ---------- */
   function relayout() {
     vh = window.innerHeight; vw = window.innerWidth;
-    layoutWork();
     measureMarquees();
     if (videos.length) setVideo(videoOn);
     lastY = -1;
