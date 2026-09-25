@@ -133,10 +133,9 @@ nav {
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
   font-family: var(--serif); font-weight: 600; font-size: 1.12rem; letter-spacing: -.01em;
 }
-.logo-mark { width: 50px; height: 30px; flex: none; color: var(--ink); overflow: visible; }
+.logo-mark { width: 58px; height: 31px; flex: none; color: var(--ink); overflow: visible; }
 .logo-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
-.logo:hover .logo-line { animation: logo-draw 1.4s var(--ease-out) both; }
-.logo:hover .logo-line.reflect { animation-delay: .35s; }
+.logo:hover .logo-line { animation: logo-draw 1.6s var(--ease-out) both; }
 @keyframes logo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 .nav-links { display: flex; gap: 4px; align-items: center; }
 .nav-links a {
